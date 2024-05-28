@@ -102,7 +102,7 @@ export const projectsData = [
     "Developed a Personal Portfolio website highlighting a diverse range of projects and journey as a full-stack web developer.",
     tags: ["NextJs", "ReactJs", "TypeScript", "Framer-motion", "Tailwind CSS"],
     imageUrl: portfolioImg,
-    link: "https://nik1609.github.io/Homepage_ecommerce/"
+    link: "https://www.nikhilkumar.info/"
   },
   {
     title: "Grammar Checker by OpenAI API",
@@ -118,7 +118,7 @@ export const projectsData = [
     "Developed a Admin Dashboard for course selling website",
     tags: ["ReactJs", "JWT", "NodeJs", "MongoDB", "ExpressJs"],
     imageUrl: coursesellingwebsiteImg,
-    link: "https://course-selling-app-coursera-frontend-b6fza7o98.vercel.app/"
+    link: "https://coursera-lite.vercel.app"
   },
   {
     title: "Todo List",
