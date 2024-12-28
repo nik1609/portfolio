@@ -85,6 +85,14 @@ export const experiencesData = [
     icon: React.createElement(LuGraduationCap),
     date: "2024",
   },
+  {
+    title: "Trainee",
+    location: "Tiger Analytics, Chennai",
+    description:
+      "Currently working as a Trainee at Tiger Analytics in Chennai, where I enhance user interfaces and optimize backend processes using ReactJS, TypeScript, and Python",
+    icon: React.createElement(CgWorkAlt),
+    date: "2024",
+  },
 ] as const;
 
 export const projectsData = [

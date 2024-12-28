@@ -102,7 +102,7 @@ export default function Intro() {
 
         <a
           className="bg-white p-4 text-gray-700 hover:text-gray-950 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
-          href="https://www.linkedin.com/in/nikhil-kumar-7616a4203/"
+          href="https://www.linkedin.com/in/nikhil-kumar-dev/"
           target="_blank"
         >
           <BsLinkedin />
@@ -118,14 +118,14 @@ export default function Intro() {
 
         <a
           className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
-          href="https://leetcode.com/u/factorial1609/"
+          href="https://leetcode.com/u/mnik16/"
           target="_blank"
         >
           <SiLeetcode />
         </a>
         <a
           className="bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
-          href="https://codeforces.com/profile/Nikhil.kumar"
+          href="https://codeforces.com/profile/mnik16"
           target="_blank"
         >
           <SiCodeforces />

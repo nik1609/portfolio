@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { link } from "fs";
 
+
 type ProjectProps = (typeof projectsData)[number];
 
 export default function Project({
