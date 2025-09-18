@@ -20,7 +20,7 @@ export default function About() {
       <SectionHeading>About Me</SectionHeading>
       
       <p className="mb-3">
-        I hold a <span className="font-medium">Bachelor of Technology in Electrical Engineering</span> from the <span className="font-medium">Indian Institute of Technology Palakkad</span>. I am currently working as a <span className="font-medium">Trainee at Tiger Analytics</span>, where I enhance user interfaces and optimize backend processes.
+        I hold a <span className="font-medium">Bachelor of Technology in Electrical Engineering</span> from the <span className="font-medium">Indian Institute of Technology Palakkad</span>. I am currently working as an <span className="font-medium">Analyst at Tiger Analytics</span>, where I enhance user interfaces and optimize backend processes.
       </p>
       
       <p className="mb-3">
