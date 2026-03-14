@@ -119,7 +119,7 @@ export default function Navbar() {
           onClick={() => setActiveHash('#contact')}
         >
           <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-          Available for hire
+          Available
         </a>
 
         {/* Mobile menu button */}
@@ -169,7 +169,7 @@ export default function Navbar() {
                   className="btn-primary w-full justify-center text-sm py-2.5"
                 >
                   <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                  Available for hire
+                  Available
                 </a>
               </li>
             </ul>
