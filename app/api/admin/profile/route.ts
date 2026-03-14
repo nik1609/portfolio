@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import { prisma } from '@/lib/db'
 import { getAdminSession } from '@/lib/auth'
 
@@ -19,6 +20,7 @@ export async function PUT(request: NextRequest) {
       profile = await prisma.profile.create({ data })
     }
 
+    revalidatePath('/')
     return NextResponse.json(profile)
   } catch {
     return NextResponse.json({ error: 'Failed to update profile' }, { status: 500 })

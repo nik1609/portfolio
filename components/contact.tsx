@@ -19,14 +19,17 @@ export default function Contact({ profile }: { profile: Profile }) {
   const { ref, inView } = useInView({ threshold: 0.2, triggerOnce: true })
   const [loading, setLoading] = useState(false)
 
-  const handleSubmit = async (formData: FormData) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     setLoading(true)
     try {
+      const formData = new FormData(e.currentTarget)
       const { error } = await sendEmail(formData)
       if (error) {
         toast.error(error)
       } else {
         toast.success("Message sent! I'll get back to you soon.")
+        ;(e.target as HTMLFormElement).reset()
       }
     } finally {
       setLoading(false)
@@ -106,7 +109,7 @@ export default function Contact({ profile }: { profile: Profile }) {
             </div>
 
             {/* Right: Form */}
-            <form action={handleSubmit} className="glass border-glow rounded-3xl p-6 sm:p-8 space-y-5">
+            <form onSubmit={handleSubmit} className="glass border-glow rounded-3xl p-6 sm:p-8 space-y-5">
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-xs text-slate-500 uppercase tracking-wider mb-2">Name</label>

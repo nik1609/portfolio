@@ -75,8 +75,8 @@ export default function Hero({ profile }: { profile: Profile }) {
       <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-violet-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
       <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-blue-600/8 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
 
-      <div className="relative max-w-6xl mx-auto px-5 sm:px-8 w-full py-16">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="relative max-w-6xl mx-auto px-5 sm:px-8 w-full py-12 sm:py-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
           {/* Left: Text */}
           <div className="order-2 lg:order-1">
@@ -85,52 +85,55 @@ export default function Hero({ profile }: { profile: Profile }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 mb-4 sm:mb-5">
                 <div className="h-px w-10 bg-gradient-to-r from-transparent to-violet-500" />
                 <span className="section-num">Hello, World 👋</span>
               </div>
 
-              <h1 className="font-grotesk text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.05] mb-4">
+              <h1 className="font-grotesk text-4xl sm:text-6xl lg:text-7xl font-black leading-[1.05] mb-3 sm:mb-4">
                 <span className="block text-slate-200">I'm</span>
                 <span className="block text-gradient mt-1">{profile.name}</span>
               </h1>
 
-              <div className="flex items-center gap-3 mb-6 h-9">
-                <span className="font-mono text-lg sm:text-xl font-medium text-slate-300">{displayed}</span>
-                <span className="w-0.5 h-6 bg-violet-400 animate-blink" />
+              <div className="flex items-center gap-3 mb-4 sm:mb-6 h-8 sm:h-9">
+                <span className="font-mono text-base sm:text-xl font-medium text-slate-300">{displayed}</span>
+                <span className="w-0.5 h-5 sm:h-6 bg-violet-400 animate-blink" />
               </div>
 
-              <p className="text-slate-400 text-base sm:text-lg leading-relaxed mb-8 max-w-lg">
+              <p className="text-slate-400 text-sm sm:text-lg leading-relaxed mb-6 sm:mb-8 max-w-lg">
                 {profile.bio}
               </p>
 
-              <div className="flex flex-wrap gap-3 mb-10">
-                <Link href="#projects" className="btn-primary">
+              <div className="flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-10">
+                <Link href="#projects" className="btn-primary text-sm sm:text-base py-2 sm:py-2.5">
                   View my work <HiArrowRight className="text-base" />
                 </Link>
-                <a href={profile.resumeUrl || '/NikhilKumar_resume.pdf'} download className="btn-secondary">
+                <a href={profile.resumeUrl || '/NikhilKumar_resume.pdf'} download className="btn-secondary text-sm sm:text-base py-2 sm:py-2.5">
                   Download CV <HiDownload className="text-base" />
                 </a>
-                <Link href="#contact" className="btn-secondary">Contact me</Link>
+                <Link href="#contact" className="btn-secondary text-sm sm:text-base py-2 sm:py-2.5">Contact me</Link>
               </div>
 
-              <div className="flex items-center gap-3">
+              {/* Social links */}
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
                 <span className="text-xs text-slate-500 font-mono uppercase tracking-widest">Find me on</span>
-                <div className="h-px w-8 bg-slate-700" />
-                {[
-                  { href: `https://linkedin.com/in/${profile.linkedin}`, icon: FaLinkedin, label: 'LinkedIn', color: 'hover:text-blue-400 hover:border-blue-400' },
-                  { href: 'https://x.com/nikhil_mk16', icon: FaXTwitter, label: 'X', color: 'hover:text-slate-200 hover:border-slate-400' },
-                  { href: `https://github.com/${profile.github}`, icon: FaGithub, label: 'GitHub', color: 'hover:text-slate-200 hover:border-slate-400' },
-                  { href: `https://leetcode.com/u/${profile.leetcode}`, icon: SiLeetcode, label: 'LeetCode', color: 'hover:text-amber-400 hover:border-amber-400' },
-                  { href: `https://codeforces.com/profile/${profile.codeforces}`, icon: SiCodeforces, label: 'Codeforces', color: 'hover:text-cyan-400 hover:border-cyan-400' },
-                  { href: '#', icon: SiHashnode, label: 'Hashnode', color: 'hover:text-blue-400 hover:border-blue-400' },
-                  { href: '#', icon: SiMedium, label: 'Medium', color: 'hover:text-emerald-400 hover:border-emerald-400' },
-                ].map(({ href, icon: Icon, label, color }) => (
-                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
-                    className={`p-2.5 rounded-xl text-slate-500 border border-slate-700/50 transition-all duration-300 ${color} hover:shadow-glow-sm hover:-translate-y-0.5 text-lg`}>
-                    <Icon />
-                  </a>
-                ))}
+                <div className="hidden sm:block h-px w-8 bg-slate-700" />
+                <div className="flex items-center gap-2 flex-wrap">
+                  {[
+                    { href: `https://linkedin.com/in/${profile.linkedin}`, icon: FaLinkedin, label: 'LinkedIn', color: 'hover:text-blue-400 hover:border-blue-400' },
+                    { href: 'https://x.com/nikhil_mk16', icon: FaXTwitter, label: 'X', color: 'hover:text-slate-200 hover:border-slate-400' },
+                    { href: `https://github.com/${profile.github}`, icon: FaGithub, label: 'GitHub', color: 'hover:text-slate-200 hover:border-slate-400' },
+                    { href: `https://leetcode.com/u/${profile.leetcode}`, icon: SiLeetcode, label: 'LeetCode', color: 'hover:text-amber-400 hover:border-amber-400' },
+                    { href: `https://codeforces.com/profile/${profile.codeforces}`, icon: SiCodeforces, label: 'Codeforces', color: 'hover:text-cyan-400 hover:border-cyan-400' },
+                    { href: '#', icon: SiHashnode, label: 'Hashnode', color: 'hover:text-blue-400 hover:border-blue-400' },
+                    { href: '#', icon: SiMedium, label: 'Medium', color: 'hover:text-emerald-400 hover:border-emerald-400' },
+                  ].map(({ href, icon: Icon, label, color }) => (
+                    <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
+                      className={`p-2 sm:p-2.5 rounded-xl text-slate-500 border border-slate-700/50 transition-all duration-300 ${color} hover:shadow-glow-sm hover:-translate-y-0.5 text-base sm:text-lg`}>
+                      <Icon />
+                    </a>
+                  ))}
+                </div>
               </div>
             </motion.div>
           </div>
@@ -146,28 +149,30 @@ export default function Hero({ profile }: { profile: Profile }) {
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-violet-500/30 to-cyan-500/20 blur-2xl scale-110" />
               <div className="absolute inset-0 rounded-full border-2 border-violet-500/20 scale-[1.15] animate-spin-slow" />
 
-              {/* Dynamic orbital tags */}
-              {orbital.slice(0, 4).map((tech, i) => {
-                const angle = (i / 4) * 360
-                const rad = (angle * Math.PI) / 180
-                const r = 165
-                const x = Math.cos(rad) * r
-                const y = Math.sin(rad) * r
-                return (
-                  <motion.div
-                    key={tech}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1 + i * 0.15 }}
-                    className="absolute tag text-[0.65rem] py-1 px-2.5 pointer-events-none"
-                    style={{ left: `calc(50% + ${x}px - 2.5rem)`, top: `calc(50% + ${y}px - 0.75rem)` }}
-                  >
-                    {tech}
-                  </motion.div>
-                )
-              })}
+              {/* Orbital tags — hidden on mobile to prevent overflow */}
+              <div className="hidden sm:block">
+                {orbital.slice(0, 4).map((tech, i) => {
+                  const angle = (i / 4) * 360
+                  const rad = (angle * Math.PI) / 180
+                  const r = 165
+                  const x = Math.cos(rad) * r
+                  const y = Math.sin(rad) * r
+                  return (
+                    <motion.div
+                      key={tech}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 1 + i * 0.15 }}
+                      className="absolute tag text-[0.65rem] py-1 px-2.5 pointer-events-none"
+                      style={{ left: `calc(50% + ${x}px - 2.5rem)`, top: `calc(50% + ${y}px - 0.75rem)` }}
+                    >
+                      {tech}
+                    </motion.div>
+                  )
+                })}
+              </div>
 
-              <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-2 border-violet-500/30 shadow-[0_0_60px_rgba(139,92,246,0.3)] bg-gradient-to-br from-violet-900/40 to-dark-200">
+              <div className="relative w-44 h-44 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden border-2 border-violet-500/30 shadow-[0_0_60px_rgba(139,92,246,0.3)] bg-gradient-to-br from-violet-900/40 to-dark-200">
                 {profile.photoUrl ? (
                   <img src={profile.photoUrl} alt={profile.name} className="w-full h-full object-cover" />
                 ) : (
@@ -182,10 +187,10 @@ export default function Hero({ profile }: { profile: Profile }) {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2 }}
-                className="absolute -bottom-3 left-1/2 -translate-x-1/2 glass border-glow rounded-full px-4 py-1.5 flex items-center gap-2 shadow-glow-sm whitespace-nowrap"
+                className="absolute -bottom-3 left-1/2 -translate-x-1/2 glass border-glow rounded-full px-3 py-1.5 flex items-center gap-2 shadow-glow-sm whitespace-nowrap"
               >
                 <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                <span className="text-xs font-mono text-slate-300">{profile.location}</span>
+                <span className="text-[10px] sm:text-xs font-mono text-slate-300">{profile.location}</span>
               </motion.div>
             </motion.div>
           </div>
@@ -196,24 +201,24 @@ export default function Hero({ profile }: { profile: Profile }) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.9 }}
-          className="mt-16 grid grid-cols-3 gap-4"
+          className="mt-12 sm:mt-16 grid grid-cols-3 gap-2 sm:gap-4"
         >
           {/* Block 1: Years of Experience */}
-          <div className="glass border-glow rounded-2xl p-5 text-center hover-glow">
-            <div className="font-mono text-3xl font-black text-violet-400 mb-1">{profile.yearsExp || '2+'}yrs</div>
-            <div className="text-xs text-slate-500 font-medium uppercase tracking-wider">Experience</div>
+          <div className="glass border-glow rounded-2xl p-3 sm:p-5 text-center hover-glow">
+            <div className="font-mono text-2xl sm:text-3xl font-black text-violet-400 mb-0.5 sm:mb-1">{profile.yearsExp || '2+'}yrs</div>
+            <div className="text-[9px] sm:text-xs text-slate-500 font-medium uppercase tracking-wider">Experience</div>
           </div>
 
           {/* Block 2: Companies */}
-          <div className="glass border-glow rounded-2xl p-5 hover-glow">
-            <div className="text-xs text-slate-500 font-medium uppercase tracking-wider mb-3 text-center">Worked at</div>
-            <div className="flex items-center justify-center gap-3 flex-wrap">
+          <div className="glass border-glow rounded-2xl p-3 sm:p-5 hover-glow">
+            <div className="text-[9px] sm:text-xs text-slate-500 font-medium uppercase tracking-wider mb-2 sm:mb-3 text-center">Worked at</div>
+            <div className="flex items-center justify-center gap-1 sm:gap-3 flex-wrap">
               {companies.map((co) => (
                 <div key={co.name} className="flex flex-col items-center gap-1">
                   {co.logoUrl ? (
-                    <img src={co.logoUrl} alt={co.name} className="h-6 object-contain opacity-80 hover:opacity-100 transition-opacity" />
+                    <img src={co.logoUrl} alt={co.name} className="h-4 sm:h-6 object-contain opacity-80 hover:opacity-100 transition-opacity" />
                   ) : (
-                    <span className="text-xs font-mono font-bold text-slate-300 bg-slate-700/50 px-2 py-0.5 rounded">{co.name.slice(0, 4).toUpperCase()}</span>
+                    <span className="text-[9px] sm:text-xs font-mono font-bold text-slate-300 bg-slate-700/50 px-1.5 sm:px-2 py-0.5 rounded">{co.name.slice(0, 4).toUpperCase()}</span>
                   )}
                 </div>
               ))}
@@ -221,10 +226,10 @@ export default function Hero({ profile }: { profile: Profile }) {
           </div>
 
           {/* Block 3: Education */}
-          <div className="glass border-glow rounded-2xl p-5 text-center hover-glow">
-            <div className="font-mono text-lg font-black text-emerald-400 mb-0.5">IIT</div>
-            <div className="text-slate-300 text-xs font-semibold">Palakkad</div>
-            <div className="text-slate-600 text-[10px] mt-1 uppercase tracking-wider">B.Tech EE · 2024</div>
+          <div className="glass border-glow rounded-2xl p-3 sm:p-5 text-center hover-glow">
+            <div className="font-mono text-base sm:text-lg font-black text-emerald-400 mb-0.5">IIT</div>
+            <div className="text-slate-300 text-[10px] sm:text-xs font-semibold">Palakkad</div>
+            <div className="text-slate-600 text-[8px] sm:text-[10px] mt-0.5 sm:mt-1 uppercase tracking-wider">B.Tech EE · 2024</div>
           </div>
         </motion.div>
       </div>

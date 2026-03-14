@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import { prisma } from '@/lib/db'
 import { getAdminSession } from '@/lib/auth'
 
@@ -25,6 +26,8 @@ export async function POST(request: NextRequest) {
         publishedAt: data.published ? new Date() : null,
       },
     })
+    revalidatePath('/')
+    revalidatePath('/blog')
     return NextResponse.json(post)
   } catch {
     return NextResponse.json({ error: 'Failed to create post' }, { status: 500 })

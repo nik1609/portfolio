@@ -2,6 +2,7 @@ import { prisma } from '@/lib/db'
 import Link from 'next/link'
 import { FiClock, FiCalendar, FiArrowLeft, FiLink } from 'react-icons/fi'
 
+export const dynamic = 'force-dynamic'
 export const metadata = { title: 'Blog | Nikhil Kumar' }
 
 interface BlogPost {

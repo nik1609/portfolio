@@ -8,6 +8,8 @@ import GithubStats from '@/components/github-stats'
 import BlogPreview from '@/components/blog-preview'
 import Contact from '@/components/contact'
 
+export const dynamic = 'force-dynamic'
+
 async function getData() {
   try {
     const [profile, experiences, projects, skills, posts] = await Promise.all([

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import { prisma } from '@/lib/db'
 import { getAdminSession } from '@/lib/auth'
 
@@ -26,6 +27,9 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
         publishedAt: data.published && !existing?.publishedAt ? new Date() : existing?.publishedAt,
       },
     })
+    revalidatePath('/')
+    revalidatePath('/blog')
+    revalidatePath(`/blog/${post.slug}`)
     return NextResponse.json(post)
   } catch {
     return NextResponse.json({ error: 'Failed to update' }, { status: 500 })
@@ -38,6 +42,8 @@ export async function DELETE(_: NextRequest, { params }: { params: { id: string 
 
   try {
     await prisma.blogPost.delete({ where: { id: params.id } })
+    revalidatePath('/')
+    revalidatePath('/blog')
     return NextResponse.json({ success: true })
   } catch {
     return NextResponse.json({ error: 'Failed to delete' }, { status: 500 })

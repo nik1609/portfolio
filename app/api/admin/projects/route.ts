@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
 import { prisma } from '@/lib/db'
 import { getAdminSession } from '@/lib/auth'
 
@@ -17,6 +18,7 @@ export async function POST(request: NextRequest) {
     const item = await prisma.project.create({
       data: { ...data, order: (last?.order ?? 0) + 1 },
     })
+    revalidatePath('/')
     return NextResponse.json(item)
   } catch {
     return NextResponse.json({ error: 'Failed to create' }, { status: 500 })
