@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Profile {
+  id             String   @id @default(cuid())
+  name           String   @default("Nikhil Kumar")
+  title          String   @default("Software Engineer")
+  subtitle       String   @default("Full-Stack Developer · IIT Palakkad")
+  bio            String   @default("I build things for the web.")
+  aboutBio       String?  // Rich HTML for the About section
+  highlights     String?  // JSON: [{icon, text}]
+  heroRoles      String?  // JSON: ["role1", "role2", ...]
+  yearsExp       String?  @default("2+")
+  companies      String?  // JSON: [{name, logoUrl}]
+  orbitalTags    String?  // JSON: ["tag1","tag2","tag3","tag4"]
+  photoUrl       String?
+  resumeUrl      String?
+  email          String   @default("")
+  github         String   @default("nik1609")
+  linkedin       String   @default("nikhil-kumar-dev")
+  leetcode       String   @default("mnik16")
+  codeforces     String   @default("mnik16")
+  cfRating       String   @default("1510")
+  problemsSolved String   @default("1000+")
+  location       String   @default("Chennai, India")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Experience {
+  id          String   @id @default(cuid())
+  title       String
+  location    String
+  description String
+  type        String   // 'work' | 'education'
+  date        String
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  tags        String[]
+  imageUrl    String?
+  link        String?
+  featured    Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Skill {
+  id        String   @id @default(cuid())
+  name      String
+  category  String   // 'language' | 'frontend' | 'backend' | 'tools' | 'cs'
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BlogPost {
+  id          String    @id @default(cuid())
+  title       String
+  slug        String    @unique
+  content     String
+  excerpt     String?
+  coverColor  String?
+  coverImage  String?   // URL or base64 for cover photo
+  tags        String[]
+  published   Boolean   @default(false)
+  publishedAt DateTime?
+  readTime    Int?
+  blogType    String    @default("written") // "written" | "embed"
+  embedUrl    String?   // URL for embed-type posts
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}

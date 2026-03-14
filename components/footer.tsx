@@ -1,16 +1,21 @@
-import React from "react";
-
 export default function Footer() {
   return (
-    <footer className="mb-10 px-4 text-center text-gray-500">
-      <small className="mb-2 block text-xs">
-        &copy; 2024 Nikhil. All rights reserved.
-      </small>
-      <p className="text-xs">
-        <span className="font-semibold">About this website:</span> built with
-        React & Next.js (App Router & Server Actions), TypeScript, Tailwind CSS,
-        Framer Motion, React Email & Resend, Vercel hosting.
-      </p>
+    <footer className="relative py-10 border-t border-violet-500/10">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <span className="w-7 h-7 rounded-lg bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center text-white text-xs font-black">
+              NK
+            </span>
+            <span className="text-slate-500 text-sm">Nikhil Kumar</span>
+          </div>
+          <p className="text-slate-600 text-xs text-center">
+            Built with Next.js, TypeScript, Tailwind CSS & Framer Motion.
+            &copy; {new Date().getFullYear()} Nikhil Kumar. All rights reserved.
+          </p>
+          <div className="w-px h-4 bg-slate-700 hidden sm:block" />
+        </div>
+      </div>
     </footer>
-  );
+  )
 }

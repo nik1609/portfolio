@@ -6,23 +6,46 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:seed": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' prisma/seed.ts",
+    "db:studio": "prisma studio",
+    "setup": "prisma generate && prisma db push && npm run db:seed"
   },
   "dependencies": {
+    "@prisma/client": "^5.22.0",
     "@react-email/components": "^0.0.19",
     "@react-email/tailwind": "^0.0.18",
+    "@tiptap/extension-code-block-lowlight": "^3.20.1",
+    "@tiptap/extension-color": "^3.20.1",
+    "@tiptap/extension-highlight": "^3.20.1",
+    "@tiptap/extension-image": "^3.20.1",
+    "@tiptap/extension-link": "^3.20.1",
+    "@tiptap/extension-placeholder": "^3.20.1",
+    "@tiptap/extension-text-align": "^3.20.1",
+    "@tiptap/extension-text-style": "^3.20.1",
+    "@tiptap/extension-typography": "^3.20.1",
+    "@tiptap/html": "^3.20.1",
+    "@tiptap/pm": "^3.20.1",
+    "@tiptap/react": "^3.20.1",
+    "@tiptap/starter-kit": "^3.20.1",
     "@types/node": "20.12.12",
     "@types/react": "18.3.2",
     "@types/react-dom": "18.3.0",
     "autoprefixer": "10.4.19",
+    "bcryptjs": "^3.0.3",
     "clsx": "^2.1.1",
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.3",
     "framer-motion": "^11.2.6",
+    "jose": "^6.2.1",
+    "lowlight": "^3.3.0",
     "next": "14.2.3",
     "postcss": "8.4.38",
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "react-github-calendar": "^5.0.5",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.2.1",
     "react-intersection-observer": "^9.10.2",
@@ -32,6 +55,9 @@
     "typescript": "5.4.5"
   },
   "devDependencies": {
-    "@types/react-vertical-timeline-component": "^3.3.3"
+    "@types/bcryptjs": "^2.4.6",
+    "@types/react-vertical-timeline-component": "^3.3.3",
+    "prisma": "^5.22.0",
+    "ts-node": "^10.9.2"
   }
 }
