@@ -97,7 +97,7 @@ export default function BlogEditor({ content, onChange }: BlogEditorProps) {
   useEffect(() => {
     if (!imgMenuOpen) return
     const close = (e: MouseEvent) => {
-      if (imgMenuRef.current && !imgMenuRef.current.contains(e.target as Node)) {
+      if (imgMenuRef.current && !imgMenuRef.current.contains(e.target as HTMLElement)) {
         setImgMenuOpen(false)
       }
     }
