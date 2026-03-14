@@ -1,13 +1,13 @@
 'use client'
 
 import { useEditor, EditorContent, Node, mergeAttributes } from '@tiptap/react'
+import { useRef, useState, useEffect } from 'react'
 import StarterKit from '@tiptap/starter-kit'
 import Image from '@tiptap/extension-image'
 import Link from '@tiptap/extension-link'
 import Placeholder from '@tiptap/extension-placeholder'
 import Typography from '@tiptap/extension-typography'
 import TextAlign from '@tiptap/extension-text-align'
-import { useRef } from 'react'
 import {
   FiBold, FiItalic, FiCode, FiList, FiLink2, FiImage,
   FiMinus, FiAlignLeft, FiAlignCenter, FiAlignRight,
@@ -91,6 +91,19 @@ interface BlogEditorProps {
 
 export default function BlogEditor({ content, onChange }: BlogEditorProps) {
   const fileRef = useRef<HTMLInputElement>(null)
+  const imgMenuRef = useRef<HTMLDivElement>(null)
+  const [imgMenuOpen, setImgMenuOpen] = useState(false)
+
+  useEffect(() => {
+    if (!imgMenuOpen) return
+    const close = (e: MouseEvent) => {
+      if (imgMenuRef.current && !imgMenuRef.current.contains(e.target as Node)) {
+        setImgMenuOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', close)
+    return () => document.removeEventListener('mousedown', close)
+  }, [imgMenuOpen])
 
   const editor = useEditor({
     immediatelyRender: false,
@@ -245,27 +258,29 @@ export default function BlogEditor({ content, onChange }: BlogEditorProps) {
           <FiLink2 />
         </T>
 
-        {/* Image: dropdown-style — click opens sub-choice */}
-        <div className="relative group/img">
-          <T onClick={() => {}} active={false} title="Insert Image">
+        {/* Image: click-toggled dropdown */}
+        <div className="relative" ref={imgMenuRef}>
+          <T onClick={() => setImgMenuOpen((v) => !v)} active={imgMenuOpen} title="Insert Image">
             <FiImage />
           </T>
-          <div className="absolute top-full left-0 mt-1 w-44 glass-strong rounded-xl border border-violet-500/20 shadow-[0_8px_30px_rgba(0,0,0,0.4)] opacity-0 pointer-events-none group-hover/img:opacity-100 group-hover/img:pointer-events-auto transition-all duration-200 z-20 overflow-hidden">
-            <button
-              type="button"
-              onClick={() => fileRef.current?.click()}
-              className="w-full px-4 py-2.5 text-left text-xs text-slate-300 hover:bg-violet-500/10 hover:text-violet-300 transition-colors"
-            >
-              📁 Upload from computer
-            </button>
-            <button
-              type="button"
-              onClick={handleImageUrl}
-              className="w-full px-4 py-2.5 text-left text-xs text-slate-300 hover:bg-violet-500/10 hover:text-violet-300 transition-colors"
-            >
-              🔗 Paste image URL
-            </button>
-          </div>
+          {imgMenuOpen && (
+            <div className="absolute top-full left-0 mt-1 w-48 glass-strong rounded-xl border border-violet-500/20 shadow-[0_8px_30px_rgba(0,0,0,0.4)] z-20 overflow-hidden">
+              <button
+                type="button"
+                onMouseDown={(e) => { e.preventDefault(); setImgMenuOpen(false); fileRef.current?.click() }}
+                className="w-full px-4 py-2.5 text-left text-xs text-slate-300 hover:bg-violet-500/10 hover:text-violet-300 transition-colors"
+              >
+                📁 Upload from computer
+              </button>
+              <button
+                type="button"
+                onMouseDown={(e) => { e.preventDefault(); setImgMenuOpen(false); handleImageUrl() }}
+                className="w-full px-4 py-2.5 text-left text-xs text-slate-300 hover:bg-violet-500/10 hover:text-violet-300 transition-colors"
+              >
+                🔗 Paste image URL
+              </button>
+            </div>
+          )}
         </div>
 
         <T onClick={handleEmbed} active={false} title="Embed (YouTube, Medium, etc.)">
